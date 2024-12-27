@@ -46,17 +46,23 @@ public class loginServlet extends HttpServlet {
 			view = "loginerror.jsp";
 		}
 		
-//		RequestDispatcher rdisp = request.getRequestDispatcher(view);
-//		rdisp.forward(request, response);
+		RequestDispatcher rdisp = request.getRequestDispatcher(view);
+		rdisp.forward(request, response);
 		
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//로그아웃
-		req.getSession().invalidate();
-		req.setAttribute("message", "로그아웃 완료되었습니다.");
-		resp.sendRedirect("loginform.jsp");
+		String action = req.getParameter("action");
+		if("loginok".equals(action)) {
+			//로그인한 사용자
+		}else {
+			//로그아웃
+			req.getSession().invalidate();
+		}
+		RequestDispatcher disp = req.getRequestDispatcher("/loginform.jsp");
+		disp.forward(req, resp);
+		
 	}
 	
 	

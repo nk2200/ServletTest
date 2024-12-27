@@ -9,6 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:forEach var="i" begin="0" end="10">
+${i }
+</c:forEach>
 <%@ include file="header.jsp" %>
 <%
 out.println(new Date()+"<br>");
